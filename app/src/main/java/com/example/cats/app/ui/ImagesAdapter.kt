@@ -1,25 +1,23 @@
-package com.example.cats.adapter
+package com.example.cats.app.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cats.R
-import com.example.cats.model.Image
-import com.example.cats.retrofit.RetrofitApi
-import com.squareup.picasso.Downloader
+import com.example.cats.domain.model.CatImage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_image.view.*
 import java.lang.Exception
 
 
 class ImagesAdapter(
-    private var images: ArrayList<Image>,
+    private var images: ArrayList<CatImage>,
     private var callback: Callback
 ) : RecyclerView.Adapter<ImagesAdapter.ImageHolder>() {
 
     interface Callback {
-        fun onImageClick(image: Image)
+        fun onImageClick(image: CatImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {
@@ -42,8 +40,10 @@ class ImagesAdapter(
             }
         }
 
-        fun onBind(item: Image) {
-           Picasso.get().load(item.url).fit()
+        fun onBind(item: CatImage) {
+            Picasso.get().load(item.url)
+                .fit()
+                .error(R.mipmap.image_holder)
                 .into(view.itemImageView, object : com.squareup.picasso.Callback {
 
                     override fun onSuccess() {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/imagesFragment"
+    tools:ignore="UnusedNavigation">
+    <fragment
+        android:id="@+id/imagesFragment"
+        android:name="com.example.cats.app.ui.ImagesFragment"
+        android:label="ImagesFragment" >
+        <action
+            android:id="@+id/action_imagesFragment_to_imageInfoFragment2"
+            app:destination="@id/imageInfoFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageInfoFragment2"
+        android:name="com.example.cats.app.ui.ImageInfoFragment"
+        android:label="ImageInfoFragment" >
+        <action
+            android:id="@+id/action_imageInfoFragment2_to_imagesFragment"
+            app:destination="@id/imagesFragment" />
+    </fragment>
+</navigation>
