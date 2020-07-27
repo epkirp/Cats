@@ -9,6 +9,7 @@ import io.realm.RealmConfiguration
 class App : Application() {
 
     override fun onCreate() {
+        super.onCreate()
         appContext = applicationContext
 
         Realm.init(this)

@@ -7,7 +7,7 @@
     tools:ignore="UnusedNavigation">
     <fragment
         android:id="@+id/imagesFragment"
-        android:name="com.example.cats.app.ui.ImagesFragment"
+        android:name="com.example.cats.app.ui.images.ImagesFragment"
         android:label="ImagesFragment" >
         <action
             android:id="@+id/action_imagesFragment_to_imageInfoFragment2"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/imageInfoFragment2"
-        android:name="com.example.cats.app.ui.ImageInfoFragment"
+        android:name="com.example.cats.app.ui.images.image_info.ImageInfoFragment"
         android:label="ImageInfoFragment" >
         <action
             android:id="@+id/action_imageInfoFragment2_to_imagesFragment"

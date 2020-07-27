@@ -21,6 +21,7 @@
             app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar"
             app:theme="@style/Theme.AppCompat.NoActionBar"
             app:titleTextColor="@color/colorPrimaryDark" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView
