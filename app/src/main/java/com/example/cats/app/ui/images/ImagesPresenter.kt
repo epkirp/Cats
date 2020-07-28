@@ -7,6 +7,7 @@ import com.example.cats.app.retrofit.RetrofitApi.getApi
 import com.example.converter.RealmConverter
 import com.example.gateways_retrofit.RetrofitCatImagesGateway
 import com.example.model.CatImage
+import com.example.model_realm.RealmCatImage
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -17,7 +18,6 @@ class ImagesPresenter : MvpPresenter<ImagesView>() {
 
     private val compositeDisposable = CompositeDisposable()
     private val catImagesGateway = RetrofitCatImagesGateway(getApi())
-    private val converter = RealmConverter()
 
     private var isFirstLoad = true
 
@@ -77,7 +77,7 @@ class ImagesPresenter : MvpPresenter<ImagesView>() {
 
     private fun onResponse(response: List<CatImage>?) {
         if (response != null) {
-            catImageGateway.addAllCatsImages(realm, converter.imageCatToRealmList(response))
+            catImageGateway.addAllCatsImages(realm, response.map { RealmCatImage.fromDomain(it) })
 
             images.addAll(response)
             if (isFirstLoad) {
@@ -93,7 +93,7 @@ class ImagesPresenter : MvpPresenter<ImagesView>() {
 
     private fun loadImagesWithoutInternet() {
 
-        val itemsFromRealm = converter.imageCatFromRealmList(catImageGateway.getAllCatImages(realm))
+        val itemsFromRealm =catImageGateway.getAllCatImages(realm)?.map { it.toDomain() }
         if (itemsFromRealm != null) {
             images.clear()
             images.addAll(itemsFromRealm)

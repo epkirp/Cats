@@ -115,8 +115,7 @@ class ImagesFragment : MvpAppCompatFragment(),
                     val args = Bundle()
                     if (image.breed.isNullOrEmpty()) {
                         args.putSerializable(
-                            "breed", RealmConverter()
-                                .breedFromRealm(RealmBreed())
+                            "breed", RealmBreed().toDomain()
                         )
                     } else {
                         args.putSerializable("breed", image.breed!![0])
